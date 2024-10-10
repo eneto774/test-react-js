@@ -96,36 +96,6 @@ npm run dev
 - `npm test`: Executa os testes
 - `npm run lint`: Executa o linter
 
-## Estrutura do Projeto
-
-reddit-explorer/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── subreddit/
-│   │   └── [id]/
-│   │       └── page.tsx
-│   ├── post/
-│   │   └── [id]/
-│   │       └── page.tsx
-│   └── api/
-│       └── auth/
-│           └── [...nextauth]/
-│               └── route.ts
-├── components/
-├── lib/
-├── hooks/
-├── styles/
-├── public/
-├── tests/
-├── .eslintrc.json
-├── .prettierrc
-├── next.config.js
-├── package.json
-├── README.md
-└── tsconfig.json
-
-
 ## Entrega
 
 - O código deve ser disponibilizado neste repositório Git público.
