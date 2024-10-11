@@ -38,7 +38,6 @@ export default function Home() {
     },
   };
 
-  // rendering components for not logged in users
   return (
     <div className="bg-zinc-950 h-screen flex items-center justify-center">
       <Card className="bg-zinc-950 w-[350px] h-[420px] text-foreground">
