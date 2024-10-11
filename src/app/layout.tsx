@@ -1,7 +1,9 @@
+import { ThemeProvider } from '@/components/theme-provider';
+import { ModeToggle } from '@/components/toggle-button';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import SessionWrapper from '../components/session-wraper';
-import './globals.css';
+import '../styles/globals.css';
 
 const geistSans = localFont({
   src: '../assets/fonts/GeistVF.woff',
@@ -27,10 +29,25 @@ export default function RootLayout({
   return (
     <SessionWrapper>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950`}
-        >
-          <main className="md:container md:mx-auto">{children}</main>
+        <head>
+          <link
+            href="https://www.redditstatic.com/shreddit/assets/favicon/64x64.png"
+            rel="icon shortcut"
+            sizes="64x64"
+          />
+        </head>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main className="md:container md:mx-auto">
+              <ModeToggle />
+              {children}
+            </main>
+          </ThemeProvider>
         </body>
       </html>
     </SessionWrapper>
