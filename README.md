@@ -11,16 +11,19 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 ### Requisitos:
 
 1. **Configuração e Estrutura:**
+
    - Utilize Next.js 14 com a estrutura de App Router (app folder).
    - Implemente o projeto usando TypeScript.
    - Configure um linter (ESLint) e um formatter (Prettier).
 
 2. **Consumo da API do Reddit:**
+
    - Utilize a API oficial do Reddit (https://www.reddit.com/dev/api/).
    - Implemente autenticação OAuth para acessar a API.
    - Use Server Components para buscar dados iniciais onde apropriado.
 
 3. **Funcionalidades:**
+
    - Página inicial com lista dos subreddits mais populares.
    - Página de detalhes do subreddit mostrando posts recentes.
    - Página de detalhes do post com comentários.
@@ -28,6 +31,7 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
    - Adicionar funcionalidade de busca por subreddits e posts.
 
 4. **Performance e Otimização:**
+
    - Utilizar Server Components para renderização eficiente no servidor.
    - Implementar Streaming SSR e React Suspense para melhorar a experiência de carregamento.
    - Utilizar o `next/image` para otimização de imagens.
@@ -35,16 +39,19 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
    - Otimizar o carregamento de fontes e outros recursos estáticos.
 
 5. **Gerenciamento de Estado:**
+
    - Utilizar Server Actions para manipulação de estado no servidor.
    - Implementar caching de dados usando React Cache ou similar.
    - Utilizar React Server Components para reduzir a quantidade de JavaScript enviado ao cliente.
 
 6. **UI/UX:**
+
    - Criar uma interface responsiva e acessível.
    - Implementar modo escuro/claro com troca dinâmica.
    - Adicionar animações suaves para transições entre páginas e carregamento de conteúdo.
 
 7. **Testes:**
+
    - Escrever testes unitários para componentes críticos.
    - Implementar testes de integração para fluxos principais.
    - Utilizar ferramentas como Jest e React Testing Library.
@@ -67,24 +74,20 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 ## Configuração do Projeto
 
 1. Clone o repositório:
-git clone https://github.com/seu-usuario/reddit-explorer.git
-cd reddit-explorer
-
+   git clone https://github.com/seu-usuario/reddit-explorer.git
+   cd reddit-explorer
 
 2. Instale as dependências:
-npm install
-
+   npm install
 
 3. Configure as variáveis de ambiente:
-Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
-REDDIT_CLIENT_ID=seu_client_id_aqui
-REDDIT_CLIENT_SECRET=seu_client_secret_aqui
-REDDIT_REDIRECT_URI=http://localhost:3000/api/auth/callback/reddit
-
+   Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
+   REDDIT_CLIENT_ID=seu_client_id_aqui
+   REDDIT_CLIENT_SECRET=seu_client_secret_aqui
+   REDDIT_REDIRECT_URI=http://localhost:3000/api/auth/callback/reddit
 
 4. Execute o projeto em modo de desenvolvimento:
-npm run dev
-
+   npm run dev
 
 5. Acesse `http://localhost:3000` no seu navegador.
 
