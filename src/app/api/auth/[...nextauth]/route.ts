@@ -6,6 +6,11 @@ const handler = NextAuth({
     RedditProvider({
       clientId: process.env.REDDIT_CLIENT_ID,
       clientSecret: process.env.REDDIT_CLIENT_SECRET,
+      authorization: {
+        params: {
+          duration: 'permanent',
+        },
+      },
     }),
   ],
 });
