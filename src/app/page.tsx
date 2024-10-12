@@ -1,5 +1,8 @@
 'use client';
-
+import { Loading } from '@/components/loading';
+import { LottieRedditIcon } from '@/components/lottie-reddit-icon';
+import { RedditIcon } from '@/components/reddit-icon';
+import { ModeToggle } from '@/components/toggle-button';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,47 +12,39 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import Lottie from 'react-lottie';
-import reditAnimation from '../assets/lotties/redit-robot-logo.json';
-import { RedditIcon } from '../components/reddit-icon';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect, RedirectType } from 'next/navigation';
+import { useCallback } from 'react';
 
 export default function Home() {
-  const { data: session } = useSession();
-  console.log(session);
+  const { status } = useSession();
+  const handleSignIn = useCallback(() => {
+    signIn('reddit', { callbackUrl: '/my-reddit' });
+  }, []);
 
-  if (session) {
-    return (
-      <div>
-        <p className="text-cyan-400">Welcome {session.user?.name}. Signed In As</p>
-        <p>{session.user?.email}</p>
-        <Button onClick={() => signOut()}>Sign out</Button>
-      </div>
-    );
+  switch (status) {
+    case 'authenticated':
+      redirect('/my-reddit', RedirectType.replace);
+    case 'loading':
+      return <Loading />;
+    default:
+      break;
   }
-
-  const defaultLottieOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: reditAnimation,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <Card className="h-[420px] w-[350px]">
+      <ModeToggle />
+      <Card className="h-[380px] w-[350px]">
         <CardHeader>
-          <Lottie options={defaultLottieOptions} height={200} width={200} />
+          <LottieRedditIcon />
         </CardHeader>
         <CardContent>
           <CardTitle>Welcome to Reddigit application.</CardTitle>
           <CardDescription>For access is necessary sign in using Reddit.</CardDescription>
         </CardContent>
         <CardFooter>
-          <Button onClick={() => signIn('reddit')} className="flex w-full gap-3 font-medium">
-            <RedditIcon size={20} />
+          <Button onClick={handleSignIn} className="flex w-full gap-3 font-medium">
+            <RedditIcon size={26} />
             Sign in with Reddit
           </Button>
         </CardFooter>
