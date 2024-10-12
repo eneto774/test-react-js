@@ -8,7 +8,7 @@ Bem-vindo ao desafio de desenvolvimento "Reddit Explorer"! Este projeto visa ava
 
 Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router que consuma a API do Reddit, focando em performance e uso eficiente de estados. A aplicação deve exibir e interagir com conteúdo do Reddit de forma otimizada.
 
-### Requisitos:
+### Requisitos
 
 1. **Configuração e Estrutura:**
 
@@ -18,7 +18,7 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 
 2. **Consumo da API do Reddit:**
 
-   - Utilize a API oficial do Reddit (https://www.reddit.com/dev/api/).
+   - Utilize a API oficial do Reddit (<https://www.reddit.com/dev/api/>).
    - Implemente autenticação OAuth para acessar a API.
    - Use Server Components para buscar dados iniciais onde apropriado.
 
@@ -47,7 +47,7 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 6. **UI/UX:**
 
    - Criar uma interface responsiva e acessível.
-   - Implementar modo escuro/claro com troca dinâmica.
+   - Implementar modo escuro/claro com troca dinâmica. - OK
    - Adicionar animações suaves para transições entre páginas e carregamento de conteúdo.
 
 7. **Testes:**
@@ -74,7 +74,7 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 ## Configuração do Projeto
 
 1. Clone o repositório:
-   git clone https://github.com/seu-usuario/reddit-explorer.git
+   git clone <https://github.com/seu-usuario/reddit-explorer.git>
    cd reddit-explorer
 
 2. Instale as dependências:
@@ -84,7 +84,7 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
    Crie um arquivo `.env.local` na raiz do projeto e adicione as seguintes variáveis:
    REDDIT_CLIENT_ID=seu_client_id_aqui
    REDDIT_CLIENT_SECRET=seu_client_secret_aqui
-   REDDIT_REDIRECT_URI=http://localhost:3000/api/auth/callback/reddit
+   REDDIT_REDIRECT_URI=<http://localhost:3000/api/auth/callback/reddit>
 
 4. Execute o projeto em modo de desenvolvimento:
    npm run dev
