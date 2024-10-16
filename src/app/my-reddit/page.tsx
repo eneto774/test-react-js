@@ -1,3 +1,4 @@
+import { PageBreadcrub } from '@/components/breadcrumb';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -11,6 +12,7 @@ export default async function MyReddit() {
 
   return (
     <div>
+      <PageBreadcrub items={[{ name: '' }, { name: 'Popular Subreddits' }]} />
       <PopularSubreddits accessToken={session.accessToken || ''} />
     </div>
   );

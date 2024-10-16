@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'styles.redditmedia.com' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: '*.redditmedia.com' },
+      { protocol: 'https', hostname: '*.redd.it' },
+    ],
   },
   env: {
     REDDIT_API_URL: process.env.REDDIT_API_URL,
