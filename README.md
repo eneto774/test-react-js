@@ -12,22 +12,22 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 
 1. **Configuração e Estrutura:**
 
-   - Utilize Next.js 14 com a estrutura de App Router (app folder).
-   - Implemente o projeto usando TypeScript.
-   - Configure um linter (ESLint) e um formatter (Prettier).
+   - Utilize Next.js 14 com a estrutura de App Router (app folder). - OK
+   - Implemente o projeto usando TypeScript. - OK
+   - Configure um linter (ESLint) e um formatter (Prettier). - OK
 
 2. **Consumo da API do Reddit:**
 
    - Utilize a API oficial do Reddit (<https://www.reddit.com/dev/api/>).
-   - Implemente autenticação OAuth para acessar a API.
+   - Implemente autenticação OAuth para acessar a API. - OK
    - Use Server Components para buscar dados iniciais onde apropriado.
 
 3. **Funcionalidades:**
 
-   - Página inicial com lista dos subreddits mais populares.
+   - Página inicial com lista dos subreddits mais populares. - OK
    - Página de detalhes do subreddit mostrando posts recentes.
    - Página de detalhes do post com comentários.
-   - Implementar infinite scrolling para carregar mais conteúdo.
+   - Implementar infinite scrolling para carregar mais conteúdo. - OK
    - Adicionar funcionalidade de busca por subreddits e posts.
 
 4. **Performance e Otimização:**

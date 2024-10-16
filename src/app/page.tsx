@@ -1,5 +1,4 @@
 'use client';
-import { Loading } from '@/components/loading';
 import { LottieRedditIcon } from '@/components/lottie-reddit-icon';
 import { RedditIcon } from '@/components/reddit-icon';
 import { ModeToggle } from '@/components/toggle-button';
@@ -12,24 +11,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { signIn, useSession } from 'next-auth/react';
-import { redirect, RedirectType } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { useCallback } from 'react';
 
 export default function Home() {
-  const { status } = useSession();
   const handleSignIn = useCallback(() => {
     signIn('reddit', { callbackUrl: '/my-reddit' });
   }, []);
-
-  switch (status) {
-    case 'authenticated':
-      redirect('/my-reddit', RedirectType.replace);
-    case 'loading':
-      return <Loading />;
-    default:
-      break;
-  }
 
   return (
     <div className="flex h-screen items-center justify-center">

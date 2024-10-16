@@ -1,7 +1,7 @@
+import AuthGuard from '@/components/auth-guard';
+import SessionWrapper from '@/components/session-wraper';
 import { ThemeProvider } from '@/components/theme-provider';
-// import { ModeToggle } from '@/components/toggle-button';
 import type { Metadata } from 'next';
-import SessionWrapper from '../components/session-wraper';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
@@ -32,8 +32,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <main className="md:container md:mx-auto">
-              {/* <ModeToggle /> */}
-              {children}
+              <AuthGuard>{children}</AuthGuard>
             </main>
           </ThemeProvider>
         </body>
