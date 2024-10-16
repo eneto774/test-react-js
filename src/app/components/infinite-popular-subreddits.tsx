@@ -5,16 +5,8 @@ import { PopularSubreddit } from '@/types/popular-subreddits';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type LoadMorePopularSubreddits = {
-  after: string;
-};
-
-export default function LoadMorePopularSubreddits({
-  initialSubreddits = [],
-  after,
-  accessToken,
-}: any) {
-  const [subreddits, setSubreddits] = useState(initialSubreddits);
+export default function InfinitePopularSubreddits({ after, accessToken }: any) {
+  const [subreddits, setSubreddits] = useState([] as any);
   const [nextAfter, setNextAfter] = useState(() => after);
   const [isLoading, setIsLoading] = useState(false);
   const observerRef = useRef();
@@ -48,7 +40,6 @@ export default function LoadMorePopularSubreddits({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log(`Render: ${Math.random()} - ${nextAfter}`);
           loadMore();
         }
       },
@@ -63,17 +54,20 @@ export default function LoadMorePopularSubreddits({
   return (
     <>
       {subreddits.map((sub: PopularSubreddit) => (
-        <li key={sub.data.id} style={{ color: sub.data.primary_color }}>
+        <li key={sub.data.id}>
           <Card className="h-full min-h-[165px] w-full">
             <div className="flex h-full flex-col justify-between gap-1 p-5">
-              <span className="text-base font-bold">
-                {sub.data.display_name} - {sub.data.name}
+              <span className="text-base font-bold" style={{ color: sub.data.primary_color }}>
+                {sub.data.display_name}
               </span>
               <CardDescription className="line-clamp-3">
-                {sub.data.public_description}
+                {sub.data.public_description || 'No Description'}
               </CardDescription>
               <div className="flex justify-end">
-                <Link className="text-sm text-sky-600" href="#">
+                <Link
+                  className="text-sm text-sky-600"
+                  href={`/my-reddit/details/${sub.data.display_name}`}
+                >
                   View more
                 </Link>
               </div>

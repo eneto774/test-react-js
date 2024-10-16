@@ -2,7 +2,7 @@ import { Card, CardDescription } from '@/components/ui/card';
 import { api } from '@/lib/api';
 import { PopularSubreddit } from '@/types/popular-subreddits';
 import Link from 'next/link';
-import LoadMorePopularSubreddits from './more-popular-subreddits';
+import InfinitePopularSubreddits from './infinite-popular-subreddits';
 
 export default async function PopularSubreddits({ accessToken, after = '' }: any) {
   try {
@@ -26,17 +26,20 @@ export default async function PopularSubreddits({ accessToken, after = '' }: any
         <h1 className="py-5 text-2xl font-extrabold">Popular Subreddits</h1>
         <ul className="grid grid-cols-2 grid-rows-4 gap-5">
           {subreddits.map((sub: PopularSubreddit) => (
-            <li key={sub.data.id} style={{ color: sub.data.primary_color }}>
+            <li key={sub.data.id}>
               <Card className="h-full min-h-[165px] w-full">
                 <div className="flex h-full flex-col justify-between gap-1 p-5">
-                  <span className="text-base font-bold">
-                    {sub.data.display_name} - {sub.data.name}
+                  <span className="text-base font-bold" style={{ color: sub.data.primary_color }}>
+                    {sub.data.display_name}
                   </span>
                   <CardDescription className="line-clamp-3">
-                    {sub.data.public_description}
+                    {sub.data.public_description || 'No Description'}
                   </CardDescription>
                   <div className="flex justify-end">
-                    <Link className="text-sm text-sky-600" href="#">
+                    <Link
+                      className="text-sm text-sky-600"
+                      href={`/my-reddit/details/${sub.data.display_name}`}
+                    >
                       View more
                     </Link>
                   </div>
@@ -44,13 +47,7 @@ export default async function PopularSubreddits({ accessToken, after = '' }: any
               </Card>
             </li>
           ))}
-          {nextAfter && (
-            <LoadMorePopularSubreddits
-              initialSubreddits={[]}
-              after={nextAfter}
-              accessToken={accessToken}
-            />
-          )}
+          {nextAfter && <InfinitePopularSubreddits after={nextAfter} accessToken={accessToken} />}
         </ul>
       </>
     );
