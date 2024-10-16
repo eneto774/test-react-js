@@ -2,6 +2,8 @@
   "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:prettier/recommended"],
   "rules": {
     "@typescript-eslint/no-require-imports": 0,
-    "@typescript-eslint/no-empty-object-type": 0
+    "@typescript-eslint/no-empty-object-type": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "@typescript-eslint/no-explicit-any": 0
   }
 }

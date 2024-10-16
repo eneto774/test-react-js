@@ -5,7 +5,17 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      return { ...session, accessToken: token.accessToken };
+    },
+  },
   providers: [
     RedditProvider({
       clientId: process.env.REDDIT_CLIENT_ID,

@@ -3,7 +3,12 @@
 import reditAnimation from '@/assets/lotties/redit-robot-logo.json';
 import Lottie from 'react-lottie';
 
-export function LottieRedditIcon() {
+type LottieRedditIconProps = {
+  height?: number;
+  width?: number;
+};
+
+export function LottieRedditIcon({ height = 200, width = 200 }: LottieRedditIconProps) {
   const defaultLottieOptions = {
     loop: true,
     autoplay: true,
@@ -13,5 +18,5 @@ export function LottieRedditIcon() {
     },
   };
 
-  return <Lottie options={defaultLottieOptions} height={200} width={200} />;
+  return <Lottie options={defaultLottieOptions} height={height} width={width} />;
 }
