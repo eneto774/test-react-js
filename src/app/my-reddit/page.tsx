@@ -13,6 +13,7 @@ export default async function MyReddit() {
   return (
     <div>
       <PageBreadcrub items={[{ name: '' }, { name: 'Popular Subreddits' }]} />
+      <input className="my-4" type="text" />
       <PopularSubreddits accessToken={session.accessToken || ''} />
     </div>
   );

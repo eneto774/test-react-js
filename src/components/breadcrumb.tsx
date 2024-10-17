@@ -9,7 +9,7 @@ import {
 
 export function PageBreadcrub({ items }: any) {
   return (
-    <Breadcrumb>
+    <Breadcrumb className="mb-3">
       <BreadcrumbList>
         {items.map((item: any, index: number) => {
           return (

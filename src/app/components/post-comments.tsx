@@ -1,60 +1,51 @@
+import { PageBreadcrub } from '@/components/breadcrumb';
+import { Card } from '@/components/ui/card';
 import { api } from '@/lib/api';
+import { CommentPost } from '@/types/comment-post';
+import Image from 'next/image';
 
 export default async function PostComments({ accessToken, id, post_id }: any) {
   try {
     const response = await api.get(`/r/${id}/comments/${post_id}/`, {
-      params: { limit: 20, sort: 'new' },
+      params: { sort: 'new' },
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'User-Agent': 'next-14',
       },
     });
 
+    const post = response?.data[0]?.data?.children[0].data;
     const comments = response?.data[1]?.data?.children;
-    // const nextAfter = response.data.data.after;
 
     return (
       <>
-        <h1 className="py-5 text-2xl font-extrabold">Comments</h1>
-        {comments?.map((comment: any) => {
-          return (
-            <div key={comment.data.id}>
-              <p>{comment.data.body}</p>
-            </div>
-          );
-        })}
-        {/* <ul className="grid grid-cols-2 grid-rows-4 gap-5">
-          {subreddits.map((sub: PopularSubreddit) => (
-            <li key={sub.data.id} style={{ color: sub.data.primary_color }}>
-              <Card className="h-full min-h-[165px] w-full">
-                <div className="flex h-full flex-col justify-between gap-1 p-5">
-                  <span className="text-base font-bold">
-                    {sub.data.display_name} - {sub.data.name} - {sub.data.display_name_prefixed} -{' '}
-                    {sub.data.id}
-                  </span>
-                  <CardDescription className="line-clamp-3">
-                    {sub.data.public_description}
-                  </CardDescription>
-                  <div className="flex justify-end">
-                    <Link
-                      className="text-sm text-sky-600"
-                      href={`/my-reddit/details/${sub.data.display_name}`}
-                    >
-                      View more
-                    </Link>
-                  </div>
+        <PageBreadcrub
+          items={[
+            { name: '' },
+            { name: 'Popular Subreddits', url: '/' },
+            { name: `r/${id}`, url: `/my-reddit/details/${id}` },
+            { name: `Post and Comments` },
+          ]}
+        />
+        <h1 className="py-5 text-2xl font-extrabold">{post.title}</h1>
+        <div className="flex w-full justify-center">
+          <Image src={post.url} width={700} height={1} alt={post.title} />
+        </div>
+        <h1 className="py-5 text-2xl font-extrabold">🔥 Hot Comments</h1>
+        {!comments.length ? (
+          <p>No Comments</p>
+        ) : (
+          comments?.map((comment: CommentPost) => {
+            return comment.data.body ? (
+              <Card key={comment.data.id} className="my-2 w-full p-2">
+                <div>
+                  <span className="text-sm">Author: {comment.data.author}</span>
+                  <p>{comment.data.body}</p>
                 </div>
               </Card>
-            </li>
-          ))}
-          {nextAfter && (
-            <LoadMorePopularSubreddits
-              initialSubreddits={[]}
-              after={nextAfter}
-              accessToken={accessToken}
-            />
-          )}
-        </ul> */}
+            ) : null;
+          })
+        )}
       </>
     );
   } catch (error) {

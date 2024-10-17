@@ -13,7 +13,6 @@ export async function UserInfo({ accessToken }: UserInfoProps) {
 
   return (
     <div className="flex items-center justify-end gap-5 px-5 py-2">
-      {/* <Image src={user.icon_img} alt="" width={50} height={50} /> */}
       <p>{user.name}</p>
       <LogoutButton />
     </div>

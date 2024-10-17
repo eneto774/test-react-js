@@ -2,6 +2,7 @@
 import { Card } from '@/components/ui/card';
 import { api } from '@/lib/api';
 import { PostSubreddit } from '@/types/posts-subreddit';
+import { ChatBubbleIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -68,7 +69,11 @@ export default function InfiniteViewMoreSubreddit({ after, accessToken, id }: an
               </div>
             </div>
             <div className="flex h-full flex-col justify-between gap-1 p-5">
-              <div className="flex justify-end">
+              <div className="flex justify-between">
+                <div className="flex items-center gap-2">
+                  <ChatBubbleIcon />
+                  <span className="text-sm">{post.data.num_comments}</span>
+                </div>
                 <Link
                   className="text-sm text-sky-600"
                   href={`/my-reddit/details/${post.data.subreddit}/comments/${post.data.id}`}

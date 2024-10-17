@@ -25,8 +25,8 @@ Sua missão é desenvolver uma aplicação web usando Next.js 14 com App Router 
 3. **Funcionalidades:**
 
    - Página inicial com lista dos subreddits mais populares. - OK
-   - Página de detalhes do subreddit mostrando posts recentes.
-   - Página de detalhes do post com comentários.
+   - Página de detalhes do subreddit mostrando posts recentes. - OK
+   - Página de detalhes do post com comentários. - OK
    - Implementar infinite scrolling para carregar mais conteúdo. - OK
    - Adicionar funcionalidade de busca por subreddits e posts.
 

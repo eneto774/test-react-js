@@ -4,6 +4,11 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: '*.redditmedia.com' },
       { protocol: 'https', hostname: '*.redd.it' },
+      { protocol: 'https', hostname: '*.reddit.com' },
+      { protocol: 'https', hostname: '*.twitch.tv' },
+      { protocol: 'https', hostname: 'youtu.be' },
+      { protocol: 'https', hostname: 'deadline.com' },
+      { protocol: 'https', hostname: '*' },
     ],
   },
   env: {

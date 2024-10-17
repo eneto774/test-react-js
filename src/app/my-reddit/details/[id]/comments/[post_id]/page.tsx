@@ -10,10 +10,5 @@ export default async function MyReddit({ params }: any) {
     redirect('/');
   }
 
-  return (
-    <div>
-      <h1>Details: {post_id}</h1>
-      <PostComments accessToken={session.accessToken} id={id} post_id={post_id} />
-    </div>
-  );
+  return <PostComments accessToken={session.accessToken} id={id} post_id={post_id} />;
 }
